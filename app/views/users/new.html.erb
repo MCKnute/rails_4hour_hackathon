@@ -1,0 +1,17 @@
+<h1>Register Now</h1>
+
+<% if flash[:success] %>
+    <p><%= flash[:success] %></p>
+<% end %>
+<% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+<% end %>
+<% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+<% end %>
+
+
+<%= render 'form_lender' %>
+<%= render 'form_borrower' %>
+
+<a href="/login"><h3 class="center-text">Already a member?</h3></a>

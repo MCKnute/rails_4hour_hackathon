@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Borrow reason:</strong>
+  <%= @user.borrow_reason %>
+</p>
+
+<p>
+  <strong>Borrow description:</strong>
+  <%= @user.borrow_description %>
+</p>
+
+<p>
+  <strong>Money:</strong>
+  <%= @user.money %>
+</p>
+
+<p>
+  <strong>Account type:</strong>
+  <%= @user.account_type %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

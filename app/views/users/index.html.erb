@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lending Dashboard</h1>
+
+<h2><%= current_user.first_name+" "+current_user.last_name %></h2>
+<p><strong>Status: </strong> <%= @my_status %></p>
+<p><strong>Money <%=
+  if @my_status == "Lender"
+  "Available" 
+  else
+  "Needed"
+  end %>: </strong>$<%= number_with_precision(current_user.money, precision: 2) %></p>
+
+
+  <h3><%=
+  if @users.exists? && @my_status == "Lender"
+    "You have friends who need loans!"
+  elsif @users.exists? && @my_status == "Borrower"
+    "You have friends who can give you loans!"
+  else
+    "You have no friends..."
+  end %></h3>
+
+
+  <% 
+    if @my_status == "Lender"
+      users_display = @users
+    else
+      users_display = @users
+    end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <% if @my_status == "Lender" %>
+      <th>Borrow reason</th>
+      <th>Borrow description</th>
+      <% end %>
+      <th>Money</th>
+      <% if @my_status == "Lender" %>
+      <th>Give Money</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% users_display.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <% if @my_status == "Lender" %>
+        <td><%= user.borrow_reason %></td>
+        <td><%= user.borrow_description %></td>
+        <% end %>
+        <td>$<%= number_with_precision(user.money, precision: 2) %></td>
+        <% if @my_status == "Lender" %>
+        <td>Manage Money</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsBeltExam</title>
+  <title>Lend 2 Friends | Hackathon App</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<h1 id="big_headline">Belt Exam</h1>
+<h1 id="big_headline">Lend 2 Friends</h1>
 <div id="wrapper">
+
+<% if current_user %>
+ 
+<div class="row">
+<form action='/login' method='post' style="float:right">
+   <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+   <input type="hidden" name="_method" value="delete">
+   <strong>Logged in as <%= current_user.first_name+" "+current_user.last_name %>!</strong>
+   <input type='submit' value='Log Out' style="display: inline-block">
+ </form>
+</div>
+<% end %>
 
 
 <%= yield %>

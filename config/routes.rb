@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
+
   root 'welcome#index'
+
+  get 'login' => 'sessions#new', as: :new_session
+  post 'login' => 'sessions#create', as: :create_session
+  delete 'login' => 'sessions#destroy', as: :destroy_session
+
+  get 'register' => 'users#new', as: :new_user
+  post 'register' => 'users#create'
+  get 'borrower' => 'users#index', as: :borrower
+  get 'lender' => 'users#index', as: :lender
+  get 'borrower/:id' => 'users#show', as: :borrower_show
+  get 'lender/:id' => 'users#show', as: :lender_show
+  # get 'users/:id/edit' => 'users#edit', as: :edit_user
+  # patch 'users/:id' => 'users#update'
+  # delete 'users/:id' => 'users#destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
